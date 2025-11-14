@@ -50,26 +50,110 @@ class OBJToTrainingTarget:
                     faces = mesh.faces.copy()
                     print(f"  Simplified: {len(vertices)} vertices, {len(faces)} faces")
                 else:
-                    # Fall back to random sampling
-                    print(f"  Simplification didn't reduce vertices, sampling instead...")
-                    indices = np.random.choice(len(vertices), self.max_vertices, replace=False)
+                    # Fall back to mesh-aware vertex sampling
+                    print(f"  Simplification didn't reduce vertices, using mesh-aware sampling...")
+                    
+                    # Build vertex-to-faces adjacency for mesh-aware sampling
+                    from collections import defaultdict
+                    vertex_faces = defaultdict(list)
+                    for face_idx, face in enumerate(faces):
+                        for v in face:
+                            vertex_faces[v].append(face_idx)
+                    
+                    # Grow selection from seeds to keep mesh connectivity
+                    selected = set()
+                    candidates = list(range(len(vertices)))
+                    np.random.shuffle(candidates)
+                    
+                    for seed in candidates:
+                        if len(selected) >= self.max_vertices:
+                            break
+                        if seed not in selected:
+                            selected.add(seed)
+                            # Add face neighbors to increase face retention
+                            for face_idx in vertex_faces[seed][:3]:  # Limit to 3 faces per vertex
+                                face = faces[face_idx]
+                                for v in face:
+                                    if len(selected) < self.max_vertices:
+                                        selected.add(v)
+                    
+                    # Convert to sorted array
+                    indices = np.array(sorted(list(selected)))[:self.max_vertices]
+                    
+                    # Create mapping from old to new indices
+                    old_to_new = {old_idx: new_idx for new_idx, old_idx in enumerate(indices)}
+                    
+                    # Sample vertices
                     vertices = vertices[indices]
-                    # Rebuild faces (simple - just use first max_vertices)
-                    valid_faces = []
+                    
+                    # Rebuild faces - only keep valid faces
+                    new_faces = []
                     for face in faces:
-                        if all(v < self.max_vertices for v in face):
-                            valid_faces.append(face)
-                    faces = np.array(valid_faces[:self.max_vertices*2]) if valid_faces else faces[:1000]
+                        if all(v in old_to_new for v in face):
+                            new_face = [old_to_new[v] for v in face]
+                            new_faces.append(new_face)
+                    
+                    faces = np.array(new_faces) if len(new_faces) > 0 else np.array([[0, 1, 2]])
                     print(f"  Sampled: {len(vertices)} vertices, {len(faces)} faces")
             except Exception as e:
                 print(f"  Warning: Simplification failed ({e})")
-                # Force reduction by sampling
+                # Force reduction by mesh-aware sampling
                 if len(vertices) > self.max_vertices:
-                    print(f"  Forcing vertex sampling to {self.max_vertices}...")
-                    indices = np.random.choice(len(vertices), self.max_vertices, replace=False)
+                    print(f"  Forcing mesh-aware vertex sampling to {self.max_vertices}...")
+                    
+                    # Build vertex-to-faces adjacency for connectivity-preserving sampling
+                    from collections import defaultdict
+                    vertex_faces = defaultdict(list)
+                    for face_idx, face in enumerate(faces):
+                        for v in face:
+                            vertex_faces[v].append(face_idx)
+                    
+                    # Grow selection from random seeds, prioritizing mesh connectivity
+                    selected = set()
+                    candidates = list(range(len(vertices)))
+                    np.random.shuffle(candidates)
+                    
+                    for seed in candidates:
+                        if len(selected) >= self.max_vertices:
+                            break
+                        if seed not in selected:
+                            selected.add(seed)
+                            # Add neighbors from connected faces to preserve topology
+                            for face_idx in vertex_faces[seed][:3]:  # Limit neighbors per vertex
+                                if len(selected) >= self.max_vertices:
+                                    break
+                                face = faces[face_idx]
+                                for v in face:
+                                    if len(selected) < self.max_vertices:
+                                        selected.add(v)
+                                    else:
+                                        break
+                    
+                    # Convert to sorted array for better memory locality
+                    indices = np.array(sorted(list(selected)))[:self.max_vertices]
+                    
+                    # Create mapping from old to new indices
+                    old_to_new = {old_idx: new_idx for new_idx, old_idx in enumerate(indices)}
+                    
+                    # Sample vertices
                     vertices = vertices[indices]
-                    # Keep reasonable number of faces
-                    faces = faces[:min(len(faces), self.max_vertices * 2)]
+                    
+                    # Rebuild faces - ONLY keep faces where ALL vertices are in sampled set
+                    new_faces = []
+                    for face in faces:
+                        # Check if all vertices in this face are in our sampled set
+                        if all(v in old_to_new for v in face):
+                            # Remap to new indices
+                            new_face = [old_to_new[v] for v in face]
+                            new_faces.append(new_face)
+                    
+                    # Convert to numpy, ensure we have at least one face
+                    if len(new_faces) > 0:
+                        faces = np.array(new_faces)
+                    else:
+                        # Fallback: create a simple triangle from first 3 vertices
+                        faces = np.array([[0, 1, 2]])
+                    
                     print(f"  Forced: {len(vertices)} vertices, {len(faces)} faces")
 
         

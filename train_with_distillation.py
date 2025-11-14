@@ -16,6 +16,27 @@ from models.geometry_model import ImprovedGeometryModel, multi_scale_geometry_lo
 from load_data import ShoeDataset, custom_collate_fn
 from config import config
 
+def distillation_collate_fn(batch):
+    """Custom collate function that handles teacher_mesh"""
+    
+    # Collate images
+    images = {}
+    for view in ['front', 'back', 'left', 'right', 'top', 'bottom']:
+        images[view] = torch.stack([sample['images'][view] for sample in batch])
+    
+    # Collate other fields (keep as lists since they have variable sizes)
+    collated = {
+        'images': images,
+        'vertices': [sample['vertices'] for sample in batch],
+        'faces': [sample['faces'] for sample in batch],
+        'vertex_colors': [sample['vertex_colors'] for sample in batch],
+        'vertex_normals': [sample['vertex_normals'] for sample in batch],
+        'shoe_id': [sample['shoe_id'] for sample in batch],
+        'obj_path': [sample['obj_path'] for sample in batch],
+        'teacher_mesh': [sample['teacher_mesh'] for sample in batch]  # ← ADD THIS
+    }
+    
+    return collated
 
 def chamfer_distance(pred_points, target_points):
     """
@@ -40,33 +61,51 @@ def chamfer_distance(pred_points, target_points):
 
 
 def sample_points_from_mesh(vertices, faces, num_samples=10000):
-    """Sample points from mesh surface"""
+    """Sample points from mesh surface - with safety checks"""
     import trimesh
     
-    # Convert to trimesh
-    mesh = trimesh.Trimesh(
-        vertices=vertices.cpu().numpy(),
-        faces=faces.cpu().numpy(),
-        process=False
-    )
-    
-    # Sample points
-    points, _ = trimesh.sample.sample_surface(mesh, num_samples)
-    
-    return torch.from_numpy(points).float().to(vertices.device)
+    try:
+        # Check if faces are valid for the vertices
+        max_face_idx = faces.max().item() if len(faces) > 0 else 0
+        num_verts = len(vertices)
+        
+        if max_face_idx >= num_verts:
+            # Invalid faces - just use vertices directly
+            print(f"Warning: Invalid faces (max index {max_face_idx} >= {num_verts} verts), using vertices directly")
+            if len(vertices) > num_samples:
+                indices = torch.randperm(len(vertices))[:num_samples]
+                return vertices[indices]
+            return vertices
+        
+        # Convert to trimesh
+        mesh = trimesh.Trimesh(
+            vertices=vertices.cpu().numpy(),
+            faces=faces.cpu().numpy(),
+            process=False
+        )
+        
+        # Sample points
+        points, _ = trimesh.sample.sample_surface(mesh, num_samples)
+        
+        return torch.from_numpy(points).float().to(vertices.device)
+        
+    except Exception as e:
+        # Fallback: just use vertices
+        print(f"Warning: Mesh sampling failed ({e}), using vertices directly")
+        if len(vertices) > num_samples:
+            indices = torch.randperm(len(vertices))[:num_samples]
+            return vertices[indices]
+        return vertices
 
 
 class DistillationLoss(nn.Module):
     """Combined loss for knowledge distillation"""
     
-    def __init__(self, alpha=0.7, lambda_chamfer=1.0, lambda_edge=2.0, 
-                 lambda_smooth=1.0, lambda_normal=0.5):
+    def __init__(self, alpha=0.7, lambda_chamfer=1.0, lambda_edge=2.0):
         super().__init__()
         self.alpha = alpha  # Weight for teacher loss
         self.lambda_chamfer = lambda_chamfer
         self.lambda_edge = lambda_edge
-        self.lambda_smooth = lambda_smooth
-        self.lambda_normal = lambda_normal
     
     def forward(self, student_output, teacher_mesh, gt_mesh, faces):
         """
@@ -116,47 +155,21 @@ class DistillationLoss(nn.Module):
         loss_chamfer = self.alpha * loss_teacher + (1 - self.alpha) * loss_gt
         
         # Regular geometric losses (on student mesh)
-        from models.geometry_model import mesh_edge_loss, mesh_laplacian_loss
+        from models.geometry_model import mesh_edge_loss
         
         loss_edge = mesh_edge_loss(student_verts.unsqueeze(0), faces)
-        loss_smooth = mesh_laplacian_loss(student_verts.unsqueeze(0), faces)
-        
-        # Normal consistency (if teacher has normals)
-        loss_normal = 0.0
-        if 'vertex_normals' in teacher_mesh and student_output.get('normals') is not None:
-            # Match student normals to nearest teacher normals
-            teacher_normals = teacher_mesh['vertex_normals']
-            student_normals = student_output['normals'][0]
-            
-            # Find nearest teacher vertex for each student vertex
-            dist_matrix = torch.cdist(student_verts.unsqueeze(0), teacher_verts.unsqueeze(0))
-            nearest_idx = dist_matrix[0].argmin(dim=1)
-            
-            # Get corresponding normals
-            target_normals = teacher_normals[nearest_idx]
-            
-            # Cosine similarity loss
-            loss_normal = 1 - torch.cosine_similarity(
-                student_normals, 
-                target_normals, 
-                dim=1
-            ).mean()
         
         # Total loss
         total_loss = (
             self.lambda_chamfer * loss_chamfer +
-            self.lambda_edge * loss_edge +
-            self.lambda_smooth * loss_smooth +
-            self.lambda_normal * loss_normal
+            self.lambda_edge * loss_edge
         )
         
         return total_loss, {
             'chamfer': loss_chamfer.item(),
             'teacher': loss_teacher.item(),
             'gt': loss_gt.item(),
-            'edge': loss_edge.item(),
-            'smooth': loss_smooth.item(),
-            'normal': loss_normal.item() if isinstance(loss_normal, torch.Tensor) else loss_normal
+            'edge': loss_edge.item()
         }
 
 
@@ -225,9 +238,8 @@ class DistillationTrainer:
             batch_size=config.batch_size_stage1,
             shuffle=True,
             num_workers=config.num_workers,
-            collate_fn=custom_collate_fn
-        )
-        
+            collate_fn=distillation_collate_fn  # ← Change this line
+     )
         print(f"✓ Dataset: {len(self.dataset)} shoes")
         
         # Initialize student model
@@ -258,9 +270,7 @@ class DistillationTrainer:
         self.criterion = DistillationLoss(
             alpha=0.9,  # Start with 90% teacher
             lambda_chamfer=config.lambda_chamfer,
-            lambda_edge=config.lambda_edge,
-            lambda_smooth=config.lambda_smooth,
-            lambda_normal=config.lambda_normal
+            lambda_edge=config.lambda_edge
         )
         
         self.best_loss = float('inf')
@@ -275,7 +285,7 @@ class DistillationTrainer:
         """Train one epoch"""
         self.model.train()
         epoch_loss = 0
-        epoch_losses = {'chamfer': 0, 'teacher': 0, 'gt': 0, 'edge': 0, 'smooth': 0}
+        epoch_losses = {'chamfer': 0, 'teacher': 0, 'gt': 0, 'edge': 0}
         num_batches = 0
         
         # Anneal alpha (gradually reduce teacher weight)
@@ -350,8 +360,7 @@ class DistillationTrainer:
                 print(f"    Teacher: {batch_loss_dict['teacher']:.6f} | "
                       f"GT: {batch_loss_dict['gt']:.6f} | "
                       f"Alpha: {alpha:.2f}")
-                print(f"    Edge: {batch_loss_dict['edge']:.6f} | "
-                      f"Smooth: {batch_loss_dict['smooth']:.6f}")
+                print(f"    Edge: {batch_loss_dict['edge']:.6f}")
         
         avg_loss = epoch_loss / num_batches if num_batches > 0 else 0
         avg_losses = {k: v / num_batches for k, v in epoch_losses.items()} if num_batches > 0 else epoch_losses
@@ -381,8 +390,7 @@ class DistillationTrainer:
             print(f"  Total Loss: {avg_loss:.6f}")
             print(f"  Chamfer: {avg_losses['chamfer']:.6f} "
                   f"(Teacher: {avg_losses['teacher']:.6f}, GT: {avg_losses['gt']:.6f})")
-            print(f"  Edge: {avg_losses['edge']:.6f} | "
-                  f"Smooth: {avg_losses['smooth']:.6f}")
+            print(f"  Edge: {avg_losses['edge']:.6f}")
             print(f"  Teacher weight: {alpha:.2f} | LR: {current_lr:.2e}")
             print(f"  Time: {epoch_time:.1f}s")
             print(f"{'─'*70}\n")
