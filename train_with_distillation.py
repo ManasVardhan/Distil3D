@@ -43,21 +43,42 @@ def chamfer_distance(pred_points, target_points):
     Compute Chamfer distance between two point clouds
     
     Args:
-        pred_points: (B, N, 3)
-        target_points: (B or 1, M, 3)
+        pred_points: (N, 3) or (B, N, 3)
+        target_points: (M, 3) or (B, M, 3)
     """
-    # Expand target if needed
+    # Ensure 3D tensors
+    if pred_points.dim() == 2:
+        pred_points = pred_points.unsqueeze(0)
     if target_points.dim() == 2:
         target_points = target_points.unsqueeze(0)
     
-    # pred -> target
-    dist_matrix = torch.cdist(pred_points, target_points)  # (B, N, M)
-    dist_pred_to_target = dist_matrix.min(dim=2)[0].mean()  # (B, N) -> scalar
+    # Ensure same batch size
+    if pred_points.size(0) != target_points.size(0):
+        if target_points.size(0) == 1:
+            target_points = target_points.expand(pred_points.size(0), -1, -1)
+        elif pred_points.size(0) == 1:
+            pred_points = pred_points.expand(target_points.size(0), -1, -1)
     
-    # target -> pred
-    dist_target_to_pred = dist_matrix.min(dim=1)[0].mean()  # (B, M) -> scalar
+    # Check for empty tensors
+    if pred_points.size(1) == 0 or target_points.size(1) == 0:
+        return torch.tensor(0.0, device=pred_points.device)
     
-    return (dist_pred_to_target + dist_target_to_pred) / 2
+    # Compute distances
+    try:
+        dist_matrix = torch.cdist(pred_points, target_points)  # (B, N, M)
+        
+        # pred -> target (for each pred point, find nearest target)
+        dist_pred_to_target = dist_matrix.min(dim=2)[0].mean()
+        
+        # target -> pred (for each target point, find nearest pred)
+        dist_target_to_pred = dist_matrix.min(dim=1)[0].mean()
+        
+        return (dist_pred_to_target + dist_target_to_pred) / 2
+    except Exception as e:
+        print(f"Error in chamfer_distance: {e}")
+        print(f"  pred_points shape: {pred_points.shape}")
+        print(f"  target_points shape: {target_points.shape}")
+        return torch.tensor(0.0, device=pred_points.device)
 
 
 def sample_points_from_mesh(vertices, faces, num_samples=10000):
@@ -65,9 +86,21 @@ def sample_points_from_mesh(vertices, faces, num_samples=10000):
     import trimesh
     
     try:
+        # Ensure tensors are on CPU for trimesh
+        vertices_cpu = vertices.cpu() if vertices.is_cuda else vertices
+        faces_cpu = faces.cpu() if faces.is_cuda else faces
+        
         # Check if faces are valid for the vertices
-        max_face_idx = faces.max().item() if len(faces) > 0 else 0
-        num_verts = len(vertices)
+        if len(faces_cpu) == 0:
+            # No faces - just use vertices directly
+            print(f"Warning: No faces provided, using vertices directly")
+            if len(vertices) > num_samples:
+                indices = torch.randperm(len(vertices))[:num_samples]
+                return vertices[indices]
+            return vertices
+        
+        max_face_idx = faces_cpu.max().item()
+        num_verts = len(vertices_cpu)
         
         if max_face_idx >= num_verts:
             # Invalid faces - just use vertices directly
@@ -77,12 +110,28 @@ def sample_points_from_mesh(vertices, faces, num_samples=10000):
                 return vertices[indices]
             return vertices
         
+        # Check for negative indices
+        if faces_cpu.min().item() < 0:
+            print(f"Warning: Negative face indices detected, using vertices directly")
+            if len(vertices) > num_samples:
+                indices = torch.randperm(len(vertices))[:num_samples]
+                return vertices[indices]
+            return vertices
+        
         # Convert to trimesh
         mesh = trimesh.Trimesh(
-            vertices=vertices.cpu().numpy(),
-            faces=faces.cpu().numpy(),
-            process=False
+            vertices=vertices_cpu.numpy(),
+            faces=faces_cpu.numpy(),
+            process=False  # Don't process to avoid changing geometry
         )
+        
+        # Validate mesh
+        if not mesh.is_valid:
+            print(f"Warning: Invalid mesh topology, using vertices directly")
+            if len(vertices) > num_samples:
+                indices = torch.randperm(len(vertices))[:num_samples]
+                return vertices[indices]
+            return vertices
         
         # Sample points
         points, _ = trimesh.sample.sample_surface(mesh, num_samples)
@@ -121,12 +170,26 @@ class DistillationLoss(nn.Module):
         student_verts = student_output['fine'][0]  # (N_student, 3)
         teacher_verts = teacher_mesh['vertices']    # (N_teacher, 3)
         
+        # Debug info
+        if faces is not None:
+            print(f"  Student verts: {student_verts.shape}, Faces: {faces.shape}, Max face idx: {faces.max().item() if len(faces) > 0 else 'N/A'}")
+        
+        # Ensure tensors are on correct device
+        device = student_verts.device
+        teacher_verts = teacher_verts.to(device)
+        
+        # Validate shapes
+        if student_verts.dim() != 2 or student_verts.size(1) != 3:
+            raise ValueError(f"Invalid student_verts shape: {student_verts.shape}")
+        if teacher_verts.dim() != 2 or teacher_verts.size(1) != 3:
+            raise ValueError(f"Invalid teacher_verts shape: {teacher_verts.shape}")
+        
         # Sample points for comparison
         if teacher_mesh['faces'] is not None and len(teacher_mesh['faces']) > 0:
             # Sample from teacher mesh surface
             teacher_points = sample_points_from_mesh(
                 teacher_verts, 
-                teacher_mesh['faces'],
+                teacher_mesh['faces'].to(device),
                 num_samples=min(10000, len(teacher_verts))
             )
         else:
@@ -134,21 +197,27 @@ class DistillationLoss(nn.Module):
             teacher_points = teacher_verts
         
         # Sample from GT
-        gt_points = gt_mesh
+        gt_points = gt_mesh.to(device)
         if len(gt_points) > 10000:
-            indices = torch.randperm(len(gt_points))[:10000]
+            indices = torch.randperm(len(gt_points), device=device)[:10000]
             gt_points = gt_points[indices]
+        
+        # Ensure we have valid points
+        if teacher_points.size(0) == 0:
+            teacher_points = teacher_verts[:min(1000, len(teacher_verts))]
+        if gt_points.size(0) == 0:
+            gt_points = gt_mesh[:min(1000, len(gt_mesh))]
         
         # Loss 1: Distillation from teacher
         loss_teacher = chamfer_distance(
-            student_verts.unsqueeze(0),
-            teacher_points.unsqueeze(0)
+            student_verts,  # Now handles 2D tensors
+            teacher_points
         )
         
         # Loss 2: Ground truth supervision
         loss_gt = chamfer_distance(
-            student_verts.unsqueeze(0),
-            gt_points.unsqueeze(0)
+            student_verts,
+            gt_points
         )
         
         # Combined Chamfer
@@ -157,7 +226,22 @@ class DistillationLoss(nn.Module):
         # Regular geometric losses (on student mesh)
         from models.geometry_model import mesh_edge_loss
         
-        loss_edge = mesh_edge_loss(student_verts.unsqueeze(0), faces)
+        # Validate faces before using them
+        if faces is not None and len(faces) > 0:
+            max_face_idx = faces.max().item()
+            num_student_verts = len(student_verts)
+            
+            if max_face_idx >= num_student_verts:
+                # Invalid faces - skip edge loss
+                print(f"Warning: Student faces invalid (max {max_face_idx} >= {num_student_verts} verts), skipping edge loss")
+                loss_edge = torch.tensor(0.0, device=student_verts.device)
+            else:
+                # Valid faces - compute edge loss
+                # DON'T unsqueeze - mesh_edge_loss expects (N, 3) not (B, N, 3)
+                loss_edge = mesh_edge_loss(student_verts, faces)
+        else:
+            # No faces - skip edge loss
+            loss_edge = torch.tensor(0.0, device=student_verts.device)
         
         # Total loss
         total_loss = (
@@ -244,9 +328,14 @@ class DistillationTrainer:
         
         # Initialize student model
         print("\nInitializing student model...")
+        
+        # Get config values with defaults
+        freeze_encoder = getattr(config, 'freeze_image_encoder', True)
+        hidden_dim = getattr(config, 'hidden_dim', 256)
+        
         self.model = ImprovedGeometryModel(
-            freeze_encoder=config.freeze_image_encoder,
-            hidden_dim=config.hidden_dim
+            freeze_encoder=freeze_encoder,
+            hidden_dim=hidden_dim
         ).to(config.device)
         
         total_params, trainable_params = self.model.count_parameters()
@@ -267,10 +356,13 @@ class DistillationTrainer:
         )
         
         # Loss function with annealing alpha
+        lambda_chamfer = getattr(config, 'lambda_chamfer', 1.0)
+        lambda_edge = getattr(config, 'lambda_edge', 2.0)
+        
         self.criterion = DistillationLoss(
             alpha=0.9,  # Start with 90% teacher
-            lambda_chamfer=config.lambda_chamfer,
-            lambda_edge=config.lambda_edge
+            lambda_chamfer=lambda_chamfer,
+            lambda_edge=lambda_edge
         )
         
         self.best_loss = float('inf')
@@ -372,6 +464,11 @@ class DistillationTrainer:
         print("\n" + "="*70)
         print("STARTING DISTILLATION TRAINING")
         print("="*70)
+        
+        # Enable CUDA error checking for better debugging
+        if torch.cuda.is_available():
+            torch.cuda.synchronize()
+            print("✓ CUDA synchronized and ready")
         
         start_time = time.time()
         
