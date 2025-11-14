@@ -1,0 +1,2047 @@
+{
+  "summary": {
+    "total_shoes": 101,
+    "complete_shoes": 101,
+    "incomplete_shoes": 0,
+    "completeness_rate": 100.0,
+    "required_views": [
+      "front",
+      "back",
+      "left",
+      "right",
+      "top",
+      "bottom"
+    ]
+  },
+  "complete": [
+    {
+      "shoe_id": "2",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "2_left.png",
+        "bottom": "2_bottom.png",
+        "front": "2_front.png",
+        "right": "2_right.png",
+        "back": "2_back.png",
+        "top": "2_top.png"
+      }
+    },
+    {
+      "shoe_id": "3",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "3_left.png",
+        "right": "3_right.png",
+        "front": "3_front.png",
+        "back": "3_back.png",
+        "bottom": "3_bottom.png",
+        "top": "3_top.png"
+      }
+    },
+    {
+      "shoe_id": "4",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "4_back.png",
+        "right": "4_right.png",
+        "front": "4_front.png",
+        "left": "4_left.png",
+        "top": "4_top.png",
+        "bottom": "4_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "5",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "5_back.png",
+        "front": "5_front.png",
+        "right": "5_right.png",
+        "bottom": "5_bottom.png",
+        "top": "5_top.png",
+        "left": "5_left.png"
+      }
+    },
+    {
+      "shoe_id": "6",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "top": "6_top.png",
+        "bottom": "6_bottom.png",
+        "back": "6_back.png",
+        "right": "6_right.png",
+        "front": "6_front.png",
+        "left": "6_left.png"
+      }
+    },
+    {
+      "shoe_id": "7",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "7_bottom.png",
+        "top": "7_top.png",
+        "front": "7_front.png",
+        "right": "7_right.png",
+        "back": "7_back.png",
+        "left": "7_left.png"
+      }
+    },
+    {
+      "shoe_id": "8",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "8_left.png",
+        "right": "8_right.png",
+        "front": "8_front.png",
+        "bottom": "8_bottom.png",
+        "back": "8_back.png",
+        "top": "8_top.png"
+      }
+    },
+    {
+      "shoe_id": "9",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "9_left.png",
+        "front": "9_front.png",
+        "right": "9_right.png",
+        "back": "9_back.png",
+        "top": "9_top.png",
+        "bottom": "9_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "11",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "11_left.png",
+        "bottom": "11_bottom.png",
+        "right": "11_right.png",
+        "front": "11_front.png",
+        "back": "11_back.png",
+        "top": "11_top.png"
+      }
+    },
+    {
+      "shoe_id": "12",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "top": "12_top.png",
+        "left": "12_left.png",
+        "back": "12_back.png",
+        "bottom": "12_bottom.png",
+        "front": "12_front.png",
+        "right": "12_right.png"
+      }
+    },
+    {
+      "shoe_id": "13",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "13_bottom.png",
+        "left": "13_left.png",
+        "right": "13_right.png",
+        "front": "13_front.png",
+        "top": "13_top.png",
+        "back": "13_back.png"
+      }
+    },
+    {
+      "shoe_id": "14",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "14_bottom.png",
+        "top": "14_top.png",
+        "back": "14_back.png",
+        "left": "14_left.png",
+        "right": "14_right.png",
+        "front": "14_front.png"
+      }
+    },
+    {
+      "shoe_id": "15",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "top": "15_top.png",
+        "front": "15_front.png",
+        "right": "15_right.png",
+        "back": "15_back.png",
+        "bottom": "15_bottom.png",
+        "left": "15_left.png"
+      }
+    },
+    {
+      "shoe_id": "16",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "16_back.png",
+        "bottom": "16_bottom.png",
+        "top": "16_top.png",
+        "right": "16_right.png",
+        "front": "16_front.png",
+        "left": "16_left.png"
+      }
+    },
+    {
+      "shoe_id": "17",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "front": "17_front.png",
+        "right": "17_right.png",
+        "back": "17_back.png",
+        "left": "17_left.png",
+        "top": "17_top.png",
+        "bottom": "17_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "20",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "top": "20_top.png",
+        "right": "20_right.png",
+        "front": "20_front.png",
+        "back": "20_back.png",
+        "left": "20_left.png",
+        "bottom": "20_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "23",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "23_bottom.png",
+        "top": "23_top.png",
+        "back": "23_back.png",
+        "front": "23_front.png",
+        "right": "23_right.png",
+        "left": "23_left.png"
+      }
+    },
+    {
+      "shoe_id": "24",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "24_left.png",
+        "front": "24_front.png",
+        "right": "24_right.png",
+        "back": "24_back.png",
+        "bottom": "24_bottom.png",
+        "top": "24_top.png"
+      }
+    },
+    {
+      "shoe_id": "25",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "25_left.png",
+        "back": "25_back.png",
+        "right": "25_right.png",
+        "front": "25_front.png",
+        "top": "25_top.png",
+        "bottom": "25_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "27",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "27_bottom.png",
+        "left": "27_left.png",
+        "top": "27_top.png",
+        "back": "27_back.png",
+        "right": "27_right.png",
+        "front": "27_front.png"
+      }
+    },
+    {
+      "shoe_id": "28",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "28_back.png",
+        "front": "28_front.png",
+        "right": "28_right.png",
+        "top": "28_top.png",
+        "left": "28_left.png",
+        "bottom": "28_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "29",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "29_back.png",
+        "right": "29_right.png",
+        "front": "29_front.png",
+        "top": "29_top.png",
+        "bottom": "29_bottom.png",
+        "left": "29_left.png"
+      }
+    },
+    {
+      "shoe_id": "31",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "top": "31_top.png",
+        "front": "31_front.png",
+        "right": "31_right.png",
+        "left": "31_left.png",
+        "bottom": "31_bottom.png",
+        "back": "31_back.png"
+      }
+    },
+    {
+      "shoe_id": "32",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "32_bottom.png",
+        "left": "32_left.png",
+        "top": "32_top.png",
+        "back": "32_back.png",
+        "right": "32_right.png",
+        "front": "32_front.png"
+      }
+    },
+    {
+      "shoe_id": "33",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "top": "33_top.png",
+        "left": "33_left.png",
+        "back": "33_back.png",
+        "bottom": "33_bottom.png",
+        "front": "33_front.png",
+        "right": "33_right.png"
+      }
+    },
+    {
+      "shoe_id": "34",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "34_back.png",
+        "left": "34_left.png",
+        "front": "34_front.png",
+        "right": "34_right.png",
+        "top": "34_top.png",
+        "bottom": "34_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "35",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "35_back.png",
+        "left": "35_left.png",
+        "bottom": "35_bottom.png",
+        "top": "35_top.png",
+        "right": "35_right.png",
+        "front": "35_front.png"
+      }
+    },
+    {
+      "shoe_id": "36",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "front": "36_front.png",
+        "right": "36_right.png",
+        "bottom": "36_bottom.png",
+        "back": "36_back.png",
+        "left": "36_left.png",
+        "top": "36_top.png"
+      }
+    },
+    {
+      "shoe_id": "38",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "38_left.png",
+        "back": "38_back.png",
+        "top": "38_top.png",
+        "bottom": "38_bottom.png",
+        "front": "38_front.png",
+        "right": "38_right.png"
+      }
+    },
+    {
+      "shoe_id": "39",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "39_left.png",
+        "top": "39_top.png",
+        "back": "39_back.png",
+        "right": "39_right.png",
+        "front": "39_front.png",
+        "bottom": "39_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "40",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "top": "40_top.png",
+        "right": "40_right.png",
+        "front": "40_front.png",
+        "back": "40_back.png",
+        "bottom": "40_bottom.png",
+        "left": "40_left.png"
+      }
+    },
+    {
+      "shoe_id": "41",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "top": "41_top.png",
+        "bottom": "41_bottom.png",
+        "front": "41_front.png",
+        "right": "41_right.png",
+        "back": "41_back.png",
+        "left": "41_left.png"
+      }
+    },
+    {
+      "shoe_id": "42",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "42_back.png",
+        "left": "42_left.png",
+        "top": "42_top.png",
+        "right": "42_right.png",
+        "front": "42_front.png",
+        "bottom": "42_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "43",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "43_back.png",
+        "left": "43_left.png",
+        "bottom": "43_bottom.png",
+        "top": "43_top.png",
+        "front": "43_front.png",
+        "right": "43_right.png"
+      }
+    },
+    {
+      "shoe_id": "44",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "44_left.png",
+        "bottom": "44_bottom.png",
+        "back": "44_back.png",
+        "front": "44_front.png",
+        "right": "44_right.png",
+        "top": "44_top.png"
+      }
+    },
+    {
+      "shoe_id": "45",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "45_left.png",
+        "back": "45_back.png",
+        "bottom": "45_bottom.png",
+        "right": "45_right.png",
+        "front": "45_front.png",
+        "top": "45_top.png"
+      }
+    },
+    {
+      "shoe_id": "46",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "front": "46_front.png",
+        "right": "46_right.png",
+        "bottom": "46_bottom.png",
+        "left": "46_left.png",
+        "top": "46_top.png",
+        "back": "46_back.png"
+      }
+    },
+    {
+      "shoe_id": "47",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "right": "47_right.png",
+        "front": "47_front.png",
+        "left": "47_left.png",
+        "top": "47_top.png",
+        "bottom": "47_bottom.png",
+        "back": "47_back.png"
+      }
+    },
+    {
+      "shoe_id": "48",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "top": "48_top.png",
+        "back": "48_back.png",
+        "left": "48_left.png",
+        "bottom": "48_bottom.png",
+        "front": "48_front.png",
+        "right": "48_right.png"
+      }
+    },
+    {
+      "shoe_id": "49",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "49_bottom.png",
+        "top": "49_top.png",
+        "back": "49_back.png",
+        "left": "49_left.png",
+        "right": "49_right.png",
+        "front": "49_front.png"
+      }
+    },
+    {
+      "shoe_id": "50",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "50_bottom.png",
+        "top": "50_top.png",
+        "left": "50_left.png",
+        "back": "50_back.png",
+        "right": "50_right.png",
+        "front": "50_front.png"
+      }
+    },
+    {
+      "shoe_id": "51",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "top": "51_top.png",
+        "front": "51_front.png",
+        "right": "51_right.png",
+        "left": "51_left.png",
+        "bottom": "51_bottom.png",
+        "back": "51_back.png"
+      }
+    },
+    {
+      "shoe_id": "52",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "52_left.png",
+        "top": "52_top.png",
+        "bottom": "52_bottom.png",
+        "back": "52_back.png",
+        "right": "52_right.png",
+        "front": "52_front.png"
+      }
+    },
+    {
+      "shoe_id": "53",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "53_left.png",
+        "front": "53_front.png",
+        "right": "53_right.png",
+        "back": "53_back.png",
+        "top": "53_top.png",
+        "bottom": "53_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "54",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "54_back.png",
+        "front": "54_front.png",
+        "right": "54_right.png",
+        "left": "54_left.png",
+        "bottom": "54_bottom.png",
+        "top": "54_top.png"
+      }
+    },
+    {
+      "shoe_id": "55",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "55_back.png",
+        "right": "55_right.png",
+        "front": "55_front.png",
+        "bottom": "55_bottom.png",
+        "left": "55_left.png",
+        "top": "55_top.png"
+      }
+    },
+    {
+      "shoe_id": "56",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "top": "56_top.png",
+        "back": "56_back.png",
+        "front": "56_front.png",
+        "right": "56_right.png",
+        "bottom": "56_bottom.png",
+        "left": "56_left.png"
+      }
+    },
+    {
+      "shoe_id": "57",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "57_bottom.png",
+        "right": "57_right.png",
+        "front": "57_front.png",
+        "top": "57_top.png",
+        "back": "57_back.png",
+        "left": "57_left.png"
+      }
+    },
+    {
+      "shoe_id": "59",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "59_left.png",
+        "top": "59_top.png",
+        "right": "59_right.png",
+        "front": "59_front.png",
+        "back": "59_back.png",
+        "bottom": "59_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "61",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "61_back.png",
+        "right": "61_right.png",
+        "front": "61_front.png",
+        "left": "61_left.png",
+        "top": "61_top.png",
+        "bottom": "61_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "62",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "62_bottom.png",
+        "front": "62_front.png",
+        "right": "62_right.png",
+        "back": "62_back.png",
+        "left": "62_left.png",
+        "top": "62_top.png"
+      }
+    },
+    {
+      "shoe_id": "63",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "63_bottom.png",
+        "back": "63_back.png",
+        "left": "63_left.png",
+        "right": "63_right.png",
+        "front": "63_front.png",
+        "top": "63_top.png"
+      }
+    },
+    {
+      "shoe_id": "65",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "65_bottom.png",
+        "top": "65_top.png",
+        "left": "65_left.png",
+        "back": "65_back.png",
+        "front": "65_front.png",
+        "right": "65_right.png"
+      }
+    },
+    {
+      "shoe_id": "67",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "67_bottom.png",
+        "top": "67_top.png",
+        "left": "67_left.png",
+        "front": "67_front.png",
+        "right": "67_right.png",
+        "back": "67_back.png"
+      }
+    },
+    {
+      "shoe_id": "68",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "68_bottom.png",
+        "top": "68_top.png",
+        "back": "68_back.png",
+        "left": "68_left.png",
+        "right": "68_right.png",
+        "front": "68_front.png"
+      }
+    },
+    {
+      "shoe_id": "70",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "70_left.png",
+        "back": "70_back.png",
+        "top": "70_top.png",
+        "front": "70_front.png",
+        "right": "70_right.png",
+        "bottom": "70_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "71",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "71_left.png",
+        "back": "71_back.png",
+        "bottom": "71_bottom.png",
+        "top": "71_top.png",
+        "right": "71_right.png",
+        "front": "71_front.png"
+      }
+    },
+    {
+      "shoe_id": "72",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "front": "72_front.png",
+        "right": "72_right.png",
+        "left": "72_left.png",
+        "bottom": "72_bottom.png",
+        "top": "72_top.png",
+        "back": "72_back.png"
+      }
+    },
+    {
+      "shoe_id": "74",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "right": "74_right.png",
+        "front": "74_front.png",
+        "top": "74_top.png",
+        "bottom": "74_bottom.png",
+        "back": "74_back.png",
+        "left": "74_left.png"
+      }
+    },
+    {
+      "shoe_id": "75",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "front": "75_front.png",
+        "right": "75_right.png",
+        "top": "75_top.png",
+        "back": "75_back.png",
+        "left": "75_left.png",
+        "bottom": "75_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "76",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "76_bottom.png",
+        "top": "76_top.png",
+        "back": "76_back.png",
+        "left": "76_left.png",
+        "right": "76_right.png",
+        "front": "76_front.png"
+      }
+    },
+    {
+      "shoe_id": "77",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "top": "77_top.png",
+        "back": "77_back.png",
+        "left": "77_left.png",
+        "bottom": "77_bottom.png",
+        "front": "77_front.png",
+        "right": "77_right.png"
+      }
+    },
+    {
+      "shoe_id": "78",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "right": "78_right.png",
+        "front": "78_front.png",
+        "left": "78_left.png",
+        "top": "78_top.png",
+        "bottom": "78_bottom.png",
+        "back": "78_back.png"
+      }
+    },
+    {
+      "shoe_id": "80",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "top": "80_top.png",
+        "bottom": "80_bottom.png",
+        "left": "80_left.png",
+        "back": "80_back.png",
+        "right": "80_right.png",
+        "front": "80_front.png"
+      }
+    },
+    {
+      "shoe_id": "81",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "81_bottom.png",
+        "top": "81_top.png",
+        "left": "81_left.png",
+        "front": "81_front.png",
+        "right": "81_right.png",
+        "back": "81_back.png"
+      }
+    },
+    {
+      "shoe_id": "83",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "83_left.png",
+        "top": "83_top.png",
+        "front": "83_front.png",
+        "right": "83_right.png",
+        "bottom": "83_bottom.png",
+        "back": "83_back.png"
+      }
+    },
+    {
+      "shoe_id": "84",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "84_bottom.png",
+        "back": "84_back.png",
+        "front": "84_front.png",
+        "right": "84_right.png",
+        "left": "84_left.png",
+        "top": "84_top.png"
+      }
+    },
+    {
+      "shoe_id": "85",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "85_back.png",
+        "right": "85_right.png",
+        "front": "85_front.png",
+        "left": "85_left.png",
+        "bottom": "85_bottom.png",
+        "top": "85_top.png"
+      }
+    },
+    {
+      "shoe_id": "89",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "89_bottom.png",
+        "left": "89_left.png",
+        "right": "89_right.png",
+        "front": "89_front.png",
+        "top": "89_top.png",
+        "back": "89_back.png"
+      }
+    },
+    {
+      "shoe_id": "90",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "90_bottom.png",
+        "top": "90_top.png",
+        "right": "90_right.png",
+        "front": "90_front.png",
+        "back": "90_back.png",
+        "left": "90_left.png"
+      }
+    },
+    {
+      "shoe_id": "91",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "front": "91_front.png",
+        "right": "91_right.png",
+        "top": "91_top.png",
+        "back": "91_back.png",
+        "bottom": "91_bottom.png",
+        "left": "91_left.png"
+      }
+    },
+    {
+      "shoe_id": "93",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "top": "93_top.png",
+        "back": "93_back.png",
+        "left": "93_left.png",
+        "front": "93_front.png",
+        "right": "93_right.png",
+        "bottom": "93_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "94",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "94_left.png",
+        "back": "94_back.png",
+        "top": "94_top.png",
+        "bottom": "94_bottom.png",
+        "front": "94_front.png",
+        "right": "94_right.png"
+      }
+    },
+    {
+      "shoe_id": "95",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "95_bottom.png",
+        "left": "95_left.png",
+        "back": "95_back.png",
+        "right": "95_right.png",
+        "front": "95_front.png",
+        "top": "95_top.png"
+      }
+    },
+    {
+      "shoe_id": "96",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "front": "96_front.png",
+        "right": "96_right.png",
+        "left": "96_left.png",
+        "bottom": "96_bottom.png",
+        "back": "96_back.png",
+        "top": "96_top.png"
+      }
+    },
+    {
+      "shoe_id": "98",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "98_bottom.png",
+        "back": "98_back.png",
+        "left": "98_left.png",
+        "top": "98_top.png",
+        "front": "98_front.png",
+        "right": "98_right.png"
+      }
+    },
+    {
+      "shoe_id": "100",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "right": "100_right.png",
+        "front": "100_front.png",
+        "top": "100_top.png",
+        "back": "100_back.png",
+        "bottom": "100_bottom.png",
+        "left": "100_left.png"
+      }
+    },
+    {
+      "shoe_id": "102",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "102_back.png",
+        "top": "102_top.png",
+        "left": "102_left.png",
+        "right": "102_right.png",
+        "front": "102_front.png",
+        "bottom": "102_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "103",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "103_back.png",
+        "top": "103_top.png",
+        "bottom": "103_bottom.png",
+        "left": "103_left.png",
+        "front": "103_front.png",
+        "right": "103_right.png"
+      }
+    },
+    {
+      "shoe_id": "105",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "105_left.png",
+        "back": "105_back.png",
+        "bottom": "105_bottom.png",
+        "top": "105_top.png",
+        "right": "105_right.png",
+        "front": "105_front.png"
+      }
+    },
+    {
+      "shoe_id": "106",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "front": "106_front.png",
+        "right": "106_right.png",
+        "bottom": "106_bottom.png",
+        "left": "106_left.png",
+        "back": "106_back.png",
+        "top": "106_top.png"
+      }
+    },
+    {
+      "shoe_id": "107",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "right": "107_right.png",
+        "front": "107_front.png",
+        "left": "107_left.png",
+        "back": "107_back.png",
+        "bottom": "107_bottom.png",
+        "top": "107_top.png"
+      }
+    },
+    {
+      "shoe_id": "108",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "108_back.png",
+        "left": "108_left.png",
+        "top": "108_top.png",
+        "bottom": "108_bottom.png",
+        "front": "108_front.png",
+        "right": "108_right.png"
+      }
+    },
+    {
+      "shoe_id": "109",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "109_back.png",
+        "bottom": "109_bottom.png",
+        "top": "109_top.png",
+        "left": "109_left.png",
+        "right": "109_right.png",
+        "front": "109_front.png"
+      }
+    },
+    {
+      "shoe_id": "113",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "top": "113_top.png",
+        "left": "113_left.png",
+        "front": "113_front.png",
+        "right": "113_right.png",
+        "back": "113_back.png",
+        "bottom": "113_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "115",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "115_bottom.png",
+        "back": "115_back.png",
+        "left": "115_left.png",
+        "right": "115_right.png",
+        "front": "115_front.png",
+        "top": "115_top.png"
+      }
+    },
+    {
+      "shoe_id": "116",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "116_back.png",
+        "front": "116_front.png",
+        "right": "116_right.png",
+        "bottom": "116_bottom.png",
+        "left": "116_left.png",
+        "top": "116_top.png"
+      }
+    },
+    {
+      "shoe_id": "117",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "117_bottom.png",
+        "back": "117_back.png",
+        "top": "117_top.png",
+        "left": "117_left.png",
+        "right": "117_right.png",
+        "front": "117_front.png"
+      }
+    },
+    {
+      "shoe_id": "119",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "119_left.png",
+        "right": "119_right.png",
+        "front": "119_front.png",
+        "back": "119_back.png",
+        "top": "119_top.png",
+        "bottom": "119_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "120",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "120_back.png",
+        "left": "120_left.png",
+        "bottom": "120_bottom.png",
+        "front": "120_front.png",
+        "right": "120_right.png",
+        "top": "120_top.png"
+      }
+    },
+    {
+      "shoe_id": "121",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "121_back.png",
+        "right": "121_right.png",
+        "front": "121_front.png",
+        "left": "121_left.png",
+        "top": "121_top.png",
+        "bottom": "121_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "122",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "122_bottom.png",
+        "top": "122_top.png",
+        "back": "122_back.png",
+        "front": "122_front.png",
+        "right": "122_right.png",
+        "left": "122_left.png"
+      }
+    },
+    {
+      "shoe_id": "124",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "top": "124_top.png",
+        "left": "124_left.png",
+        "right": "124_right.png",
+        "front": "124_front.png",
+        "bottom": "124_bottom.png",
+        "back": "124_back.png"
+      }
+    },
+    {
+      "shoe_id": "125",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "top": "125_top.png",
+        "bottom": "125_bottom.png",
+        "front": "125_front.png",
+        "right": "125_right.png",
+        "left": "125_left.png",
+        "back": "125_back.png"
+      }
+    },
+    {
+      "shoe_id": "126",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "126_left.png",
+        "back": "126_back.png",
+        "right": "126_right.png",
+        "front": "126_front.png",
+        "top": "126_top.png",
+        "bottom": "126_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "127",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "bottom": "127_bottom.png",
+        "front": "127_front.png",
+        "right": "127_right.png",
+        "left": "127_left.png",
+        "back": "127_back.png",
+        "top": "127_top.png"
+      }
+    },
+    {
+      "shoe_id": "129",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "back": "129_back.png",
+        "front": "129_front.png",
+        "right": "129_right.png",
+        "top": "129_top.png",
+        "left": "129_left.png",
+        "bottom": "129_bottom.png"
+      }
+    },
+    {
+      "shoe_id": "130",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "130_left.png",
+        "back": "130_back.png",
+        "bottom": "130_bottom.png",
+        "front": "130_front.png",
+        "right": "130_right.png",
+        "top": "130_top.png"
+      }
+    },
+    {
+      "shoe_id": "131",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "left": "131_left.png",
+        "back": "131_back.png",
+        "bottom": "131_bottom.png",
+        "right": "131_right.png",
+        "front": "131_front.png",
+        "top": "131_top.png"
+      }
+    },
+    {
+      "shoe_id": "132",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "front": "132_front.png",
+        "right": "132_right.png",
+        "top": "132_top.png",
+        "bottom": "132_bottom.png",
+        "left": "132_left.png",
+        "back": "132_back.png"
+      }
+    },
+    {
+      "shoe_id": "133",
+      "status": "complete",
+      "views": [
+        "back",
+        "bottom",
+        "front",
+        "left",
+        "right",
+        "top"
+      ],
+      "files": {
+        "right": "133_right.png",
+        "front": "133_front.png",
+        "bottom": "133_bottom.png",
+        "top": "133_top.png",
+        "left": "133_left.png",
+        "back": "133_back.png"
+      }
+    }
+  ],
+  "incomplete": [],
+  "view_statistics": {
+    "front": 101,
+    "right": 101,
+    "back": 101,
+    "left": 101,
+    "bottom": 101,
+    "top": 101
+  }
+}
